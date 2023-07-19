@@ -33,13 +33,15 @@ const Button = styled.button`
 
 export default function HomePage() {
   const { data } = useSWR("/api/tasks", { fallbackData: [] });
-  console.log(data);
+
   return (
     <>
       <List role="list">
         {data.map((image) => (
           <ListItem key={image._id}>
-            <Home src={image.src} alt={image.alt} id={image._id} />
+            <Link href={`/${image.alt}`}>
+              <Home src={image.src} alt={image.alt} id={image._id} />{" "}
+            </Link>
           </ListItem>
         ))}
       </List>
