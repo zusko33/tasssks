@@ -21,10 +21,10 @@ export default function Form({ onSubmit }) {
       />
       <label htmlFor="type">choose type of task:</label>
       <select name="type" id="type">
-        <option value="clean">🧽 🪣 </option>
+        <option value="🧽 🪣 ">🧽 🪣 </option>
 
-        <option value="documents">🗂 📌 </option>
-        <option value="doctor">🩺 💉</option>
+        <option value="🗂 📌 ">🗂 📌 </option>
+        <option value="🩺 💉">🩺 💉</option>
       </select>
       <label htmlFor="description">description:</label>
       <textarea

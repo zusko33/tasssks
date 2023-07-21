@@ -9,9 +9,9 @@ const Button = styled.button`
   color: black;
 `;
 
-export default function ListOfTasks() {
-  const { data } = useSWR("/api/tasks", { fallbackData: [] });
-  console.log("data", data);
+export default function ListOfTasks({ data }) {
+  //   const { data } = useSWR("/api/tasks", { fallbackData: [] });
+  //   console.log("data", data);
   return (
     <>
       <ul role="list">
