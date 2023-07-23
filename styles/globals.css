@@ -24,6 +24,7 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb)); */
-  color: black;
-  background-color: grey;
+  /* color: black; */
+  /* background-color: grey; */
+  margin: 20% 20% 20% 30%;
 }
