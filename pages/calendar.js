@@ -3,8 +3,8 @@ import useSWR from "swr";
 import Link from "next/link";
 import styled from "styled-components";
 
-const StyledBackLink = styled(Link)`
-  justify-self: flex-start;
+const Button = styled.button`
+  margin: 2% 2% 2% 2%;
 `;
 
 export default function Calendar() {
@@ -14,7 +14,9 @@ export default function Calendar() {
     <>
       <ListOfTasks data={data} />
       <Link href="/" passHref legacyBehavior>
-        <StyledBackLink>⬅️</StyledBackLink>
+        <Link>
+          <Button className="btn btn-neutral"> 🔙 </Button>
+        </Link>
       </Link>
     </>
   );

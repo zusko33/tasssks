@@ -4,10 +4,9 @@ import { useRouter } from "next/router";
 import useSWR from "swr";
 import Form from "@/components/Form";
 
-const StyledBackLink = styled(Link)`
-  justify-self: flex-start;
+const Button = styled.button`
+  margin: 2% 2% 2% 2%;
 `;
-
 export default function AddNewTaskPage() {
   const router = useRouter();
   const { mutate } = useSWR("/api/tasks");
@@ -38,10 +37,13 @@ export default function AddNewTaskPage() {
 
   return (
     <>
-      <h2>Add Tasssks</h2>
       <Link href="/" passHref legacyBehavior>
-        <StyledBackLink>⬅️</StyledBackLink>
+        <Link>
+          <Button className="btn btn-neutral"> 🔙 </Button>
+        </Link>
       </Link>
+      <h2>Add Tasssks</h2>
+
       <Form onSubmit={addTask} />
     </>
   );
