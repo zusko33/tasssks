@@ -33,7 +33,12 @@ export default function DetailsPage() {
       <Link href={"/calendar"} passHref legacyBehavior>
         <Link justifySelf="start">back</Link>
       </Link>
-      <Task data={data} onClick={deleteTask} />
+      <Task
+        data={data}
+        onClick={
+          confirm("Are you sure you want to delete this task?") && deleteTask
+        }
+      />
     </>
   );
 }

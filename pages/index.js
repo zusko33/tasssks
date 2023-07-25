@@ -40,10 +40,7 @@ export default function HomePage() {
     <>
       <List role="list" className="flex flex-col w-full border-opacity-50">
         {data.map((image) => (
-          <li
-            key={image._id}
-            className="grid h-20 card bg-base-300 rounded-box place-items-center"
-          >
+          <li key={image._id}>
             <Link href={`/${image.alt}`}>
               <Home src={image.src} alt={image.alt} id={image._id} />{" "}
             </Link>
