@@ -1,5 +1,8 @@
 import TitleBar from "./TitleBar.js";
 import styled from "styled-components";
+import { Amaranth } from "next/font/google";
+
+const amaranth = Amaranth({ weight: "400", subsets: ["latin"] });
 
 // const Main = styled.main`
 //   display: grid;
@@ -36,7 +39,7 @@ export default function Layout({ children }) {
           <title>TASSSKS</title>
         </header> */}
         <TitleBar />
-        <main>{children}</main>
+        <main className={amaranth.className}>{children}</main>
       </Div>
     </>
   );

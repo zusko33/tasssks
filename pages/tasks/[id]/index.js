@@ -2,6 +2,11 @@ import { useRouter } from "next/router";
 import useSWR from "swr";
 import Link from "next/link";
 import Task from "@/components/Task";
+import styled from "styled-components";
+
+const Button = styled.button`
+  margin: 2% 2% 2% 2%;
+`;
 
 export default function DetailsPage() {
   const router = useRouter();
@@ -30,8 +35,8 @@ export default function DetailsPage() {
 
   return (
     <>
-      <Link href={"/calendar"} passHref legacyBehavior>
-        <Link justifySelf="start">back</Link>
+      <Link href="/calendar" passHref legacyBehavior>
+        <Button className="btn btn-neutral"> 🔙 </Button>
       </Link>
       <Task
         data={data}
