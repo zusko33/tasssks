@@ -1,6 +1,5 @@
 import TitleBar from "./TitleBar.js";
 import styled from "styled-components";
-import Head from "next/head.js";
 
 // const Main = styled.main`
 //   display: grid;
@@ -27,25 +26,18 @@ import Head from "next/head.js";
 //   color: black;
 // `;
 const Div = styled.div`
-  position: absolute;
-  align-self: center;
+  margin-top: 2%;
 `;
 export default function Layout({ children }) {
   return (
     <>
-      <div className="mockup-phone">
-        <div className="camera"></div>
-        <div className="display">
-          <div className="artboard artboard-demo phone-1">
-            <header>
-              <title>TASSSKS</title>
-            </header>
-            {/* <TitleBar /> */}
-            <main>{children}</main>
-            {/* <footer>Zuzanna Skokowska ®</footer> */}
-          </div>
-        </div>
-      </div>
+      <Div className="artboard phone-5">
+        {/* <header>
+          <title>TASSSKS</title>
+        </header> */}
+        <TitleBar />
+        <main>{children}</main>
+      </Div>
     </>
   );
 }

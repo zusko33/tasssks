@@ -15,14 +15,14 @@ export default function AddNewTaskPage() {
     event.preventDefault();
 
     const formData = new FormData(event.target);
-    const placeData = Object.fromEntries(formData);
+    const tasksData = Object.fromEntries(formData);
 
     const response = await fetch("/api/tasks", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(placeData),
+      body: JSON.stringify(tasksData),
     });
 
     if (!response.ok) {
@@ -38,13 +38,10 @@ export default function AddNewTaskPage() {
   return (
     <>
       <Link href="/" passHref legacyBehavior>
-        <Link>
-          <Button className="btn btn-neutral"> 🔙 </Button>
-        </Link>
+        <Button className="btn btn-neutral"> 🔙 </Button>
       </Link>
-      <h2>Add Tasssks</h2>
 
-      <Form onSubmit={addTask} />
+      <Form onSubmit={addTask} title="ADD A NEW TASK:" />
     </>
   );
 }

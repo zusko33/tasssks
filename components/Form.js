@@ -7,10 +7,11 @@ import styled from "styled-components";
 //   color: black;
 // `;
 
-export default function Form({ onSubmit }) {
+export default function Form({ onSubmit, title, defaultValue }) {
   // if there will be default date add a prop to Form component
   return (
     <form onSubmit={onSubmit} className="form-control w-full max-w-xs">
+      <h2>{title}</h2>
       <label htmlFor="name" className="label">
         <span className="label-text">Title: </span>
       </label>
@@ -19,7 +20,7 @@ export default function Form({ onSubmit }) {
         name="name"
         type="text"
         maxLength="20"
-        // defaultValue={defaultValue?.name}
+        defaultValue={defaultValue?.name}
       />
       <label htmlFor="type" className="label">
         <span className="label-text">choose type of task:</span>
@@ -38,11 +39,10 @@ export default function Form({ onSubmit }) {
         name="description"
         cols="30"
         rows="10"
-        // defaultValue={defaultValue?.description}
+        defaultValue={defaultValue?.description}
       ></textarea>
       <button className="btn btn-neutral">
-        {/* {defaultValue ? "Update this task" : "Add this task"} */}
-        Add this task
+        {defaultValue ? "Update this task" : "Add this task"}
       </button>
     </form>
   );

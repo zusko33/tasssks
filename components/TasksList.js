@@ -27,18 +27,26 @@ export default function ListOfTasks({ data }) {
             <Div className="card w-96 bg-base-100 shadow-xl">
               <div className="card-body">
                 <div className="card-actions justify-end">
-                  <button className="btn btn-square btn-sm"> ⚙️</button>
+                  <button className="btn btn-square btn-sm">
+                    <Link
+                      href={`/tasks/${task._id}/edit`}
+                      passHref
+                      legacyBehavior
+                    >
+                      ⚙️
+                    </Link>
+                  </button>
+                  <button className="btn btn-square btn-sm">
+                    <Link href={`/tasks/${task._id}`} passHref legacyBehavior>
+                      🗑
+                    </Link>
+                  </button>
                 </div>
                 <p>
                   {task.name} {task.type}
                 </p>
               </div>
             </Div>
-            {/* <p>
-              {task.name} {task.type}
-            </p>
-
-            <Button> Edit ⚙️</Button> */}
           </li>
         ))}
       </ul>
