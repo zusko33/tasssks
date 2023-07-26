@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Task({ data, onClick }) {
   console.log("task", data);
   return (
@@ -10,6 +12,9 @@ export default function Task({ data, onClick }) {
           <button className="badge badge-outline" onClick={onClick}>
             delete
           </button>
+          <Link href={`/tasks/${data._id}/edit`} passHref legacyBehavior>
+            <button className="badge badge-outline"> edit </button>
+          </Link>
         </div>
       </div>
     </div>
