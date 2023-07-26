@@ -22,6 +22,15 @@ export default function Form({ onSubmit, title, defaultValue }) {
         maxLength="20"
         defaultValue={defaultValue?.name}
       />
+      <label htmlFor="date" className="label">
+        <span className="label-text">choose date:</span>
+      </label>
+      <input
+        id="date"
+        name="date"
+        type="date"
+        defaultValue={defaultValue?.date}
+      />
       <label htmlFor="type" className="label">
         <span className="label-text">choose type of task:</span>
       </label>

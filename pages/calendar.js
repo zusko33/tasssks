@@ -16,13 +16,23 @@ const Div = styled.div`
 export default function List() {
   const { data } = useSWR("/api/tasks", { fallbackData: [] });
   const [value, onChange] = useState(new Date());
+  const [tasks, setDoneList] = useState(data);
+
+  const handleDoneClick = (_id) => {
+    console.log("done click", _id);
+    const toggleDone = tasks.map((task) =>
+      task._id === _id ? { ...task, isDone: !task.isDone } : task
+    );
+    setDoneList(toggleDone);
+  };
+  console.log(data);
 
   return (
     <>
       <Div>
         <Calendar onChange={onChange} value={value} />
       </Div>
-      <ListOfTasks data={data} />
+      <ListOfTasks data={data} onClick={handleDoneClick} />
       <Link href="/" passHref legacyBehavior>
         <Link>
           <Button className="btn btn-neutral"> 🔙 </Button>

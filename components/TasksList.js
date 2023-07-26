@@ -1,30 +1,21 @@
 import Link from "next/link";
 import styled from "styled-components";
-// import useSWR from "swr";
-
-// const Button = styled.button`
-//   position: relative;
-//   background-color: white;
-//   border-radius: 8px;
-//   color: black;
-// `;
 
 const Div = styled.div`
   margin-bottom: 2%;
+  justify-content: center;
 `;
 const Button = styled.button`
   margin: 2% 2% 2% 5%;
 `;
 
-export default function ListOfTasks({ data }) {
-  //   const { data } = useSWR("/api/tasks", { fallbackData: [] });
-  //   console.log("data", data);
+export default function ListOfTasks({ data, onClick }) {
   return (
     <>
       <ul role="list">
         {data.map((task) => (
           <li key={task._id}>
-            <Div className="card w-96 bg-base-100 shadow-xl">
+            <Div className="card w-96 h-20 bg-base-100 shadow-xl">
               <div className="card-body">
                 <div className="card-actions justify-end">
                   <button className="btn btn-square btn-sm">
@@ -41,9 +32,13 @@ export default function ListOfTasks({ data }) {
                       🗑
                     </Link>
                   </button>
+                  <button className="btn btn-square btn-sm" onClick={onClick}>
+                    ☑️
+                  </button>
                 </div>
                 <p>
-                  {task.name} {task.type}
+                  {task.name} {task.type} <br />
+                  {task.date}
                 </p>
               </div>
             </Div>
