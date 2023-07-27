@@ -17,7 +17,7 @@ export default function Done() {
     <>
       <ul role="list">
         {data
-          .filter((tasks) => tasks.isDone === true)
+          .filter((items) => items.isDone === true)
           .map((task) => (
             <li key={task._id}>
               <Div className="card w-96 h-20 bg-base-100 shadow-xl">

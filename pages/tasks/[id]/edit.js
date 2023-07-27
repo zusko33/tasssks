@@ -16,8 +16,6 @@ export default function EditPage() {
   const { data, isLoading, error } = useSWR(`/api/tasks/${id}`);
   if (!isReady || isLoading || error) return <h2>Loading...</h2>;
 
-  console.log(id);
-
   async function editTask(event) {
     event.preventDefault();
 
