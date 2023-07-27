@@ -8,9 +8,6 @@ const Div = styled.div`
 `;
 const Button = styled.button`
   margin: 2% 2% 2% 5%;
-  &:active {
-    color: red;
-  }
 `;
 
 export default function TasksList({ data, onToggleDone }) {
@@ -37,7 +34,11 @@ export default function TasksList({ data, onToggleDone }) {
                     </Link>
                   </button>
                   <button
-                    className="btn btn-square btn-sm"
+                    className={
+                      task.isDone
+                        ? "btn btn-square btn-sm"
+                        : "btn btn-square btn-sm btn-active btn-secondary"
+                    }
                     onClick={() => onToggleDone(task._id)}
                   >
                     ☑️
