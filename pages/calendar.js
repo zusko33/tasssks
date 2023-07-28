@@ -4,7 +4,7 @@ import Link from "next/link";
 import styled from "styled-components";
 import Calendar from "react-calendar";
 import React, { useState } from "react";
-import useLocalStorageState from "use-local-storage-state";
+import { useRouter } from "next/router";
 
 const Button = styled.button`
   margin: 2% 2% 2% 2%;
@@ -14,26 +14,46 @@ const Div = styled.div`
 `;
 
 export default function List() {
-  const { data } = useSWR("/api/tasks", { fallbackData: [] });
+  const router = useRouter();
+  const { isReady } = router;
+  const { id } = router.query;
+  const { data, isLoading, error } = useSWR("/api/tasks", { fallbackData: [] });
   const [value, onChange] = useState(new Date());
-  const [tasks, setDoneList] = useLocalStorageState("tasks", data);
+  const { mutate } = useSWR("/api/tasks");
+  const [tasks, setTasks] = useState(data);
+  if (!isReady || isLoading || error) return <h2>Loading...</h2>;
 
-  const handleDoneClick = (id) => {
-    console.log("done click", id);
-    setDoneList(
-      tasks.map((task) =>
-        task._id === id ? { ...task, isDone: !task.isDone } : task
-      )
+  async function doneTask(taskId) {
+    const updateTask = tasks.find((task) => task._id === taskId);
+    console.log("updateTask", updateTask);
+    updateTask.isDone = !updateTask.isDone;
+
+    const response = await fetch(`/api/tasks/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updateTask),
+    });
+
+    if (!response.ok) {
+      console.error(response.status);
+      return;
+    }
+
+    setTasks((prevTasks) =>
+      prevTasks.map((task) => (task._id === taskId ? updateTask : task))
     );
-    console.log("tasks", tasks);
-  };
+    mutate();
+    router.push("/calendar");
+  }
 
   return (
     <>
       <Div>
         <Calendar onChange={onChange} value={value} />
       </Div>
-      <TasksList data={tasks} onToggleDone={handleDoneClick} />
+      <TasksList data={data} onClick={doneTask} />
       <Link href="/" passHref legacyBehavior>
         <Link>
           <Button className="btn btn-neutral"> 🔙 </Button>

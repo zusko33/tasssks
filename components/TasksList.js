@@ -1,4 +1,3 @@
-import { data } from "autoprefixer";
 import Link from "next/link";
 import styled from "styled-components";
 
@@ -10,7 +9,8 @@ const Button = styled.button`
   margin: 2% 2% 2% 5%;
 `;
 
-export default function TasksList({ data, onToggleDone }) {
+export default function TasksList({ data, onClick }) {
+  console.log(data);
   return (
     <>
       <ul role="list">
@@ -34,12 +34,12 @@ export default function TasksList({ data, onToggleDone }) {
                     </Link>
                   </button>
                   <button
+                    onClick={() => onClick(task._id)}
                     className={
                       task.isDone
-                        ? "btn btn-square btn-sm"
-                        : "btn btn-square btn-sm btn-active btn-secondary"
+                        ? "btn btn-square btn-sm btn-active btn-secondary"
+                        : "btn btn-square btn-sm"
                     }
-                    onClick={() => onToggleDone(task._id)}
                   >
                     ☑️
                   </button>

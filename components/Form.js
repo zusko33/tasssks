@@ -1,14 +1,4 @@
-import styled from "styled-components";
-
-// const Button = styled.button`
-//   position: relative;
-//   background-color: white;
-//   border-radius: 8px;
-//   color: black;
-// `;
-
 export default function Form({ onSubmit, title, defaultValue }) {
-  // if there will be default date add a prop to Form component
   return (
     <form onSubmit={onSubmit} className="form-control w-full max-w-xs">
       <h2>{title}</h2>

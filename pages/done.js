@@ -1,36 +1,21 @@
 import useSWR from "swr";
+import { useState } from "react";
+import { useRouter } from "next/router";
 import Link from "next/link";
 import styled from "styled-components";
+import TasksList from "@/components/TasksList";
 
 const Button = styled.button`
   margin: 2% 2% 2% 2%;
 `;
-const Div = styled.div`
-  margin-bottom: 2%;
-  justify-content: center;
-`;
 
 export default function Done() {
   const { data } = useSWR("/api/tasks", { fallbackData: [] });
+  const updateData = data.filter((item) => item.isDone === true);
 
   return (
     <>
-      <ul role="list">
-        {data
-          .filter((items) => items.isDone === true)
-          .map((task) => (
-            <li key={task._id}>
-              <Div className="card w-96 h-20 bg-base-100 shadow-xl">
-                <div className="card-body">
-                  <p>
-                    {task.name} {task.type} <br />
-                    {task.date}
-                  </p>
-                </div>
-              </Div>
-            </li>
-          ))}
-      </ul>
+      <TasksList data={updateData} />
       <Link href="/" passHref legacyBehavior>
         <Link>
           <Button className="btn btn-neutral"> 🔙 </Button>

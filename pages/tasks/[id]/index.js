@@ -41,9 +41,7 @@ export default function DetailsPage() {
       <Task
         data={data}
         onClick={
-          confirm("Are you sure you want to delete this task?")
-            ? deleteTask
-            : undefined
+          confirm("Are you sure you want to delete this task?") && deleteTask
         }
       />
     </>

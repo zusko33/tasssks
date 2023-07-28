@@ -1,7 +1,6 @@
 import Link from "next/link";
 
 export default function Task({ data, onClick }) {
-  console.log("task", data);
   return (
     <div className="card w-96 bg-base-100 shadow-xl" key={data._id}>
       <h1>{data.type}</h1>
