@@ -25,10 +25,10 @@ export default function List() {
 
   async function doneTask(taskId) {
     const updateTask = tasks.find((task) => task._id === taskId);
-    console.log("updateTask", updateTask);
+    console.log("updateTask", taskId);
     updateTask.isDone = !updateTask.isDone;
 
-    const response = await fetch(`/api/tasks/${id}`, {
+    const response = await fetch(`/api/tasks/${taskId}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

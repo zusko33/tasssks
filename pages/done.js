@@ -1,6 +1,6 @@
 import useSWR from "swr";
-import { useState } from "react";
-import { useRouter } from "next/router";
+// import { useState } from "react";
+// import { useRouter } from "next/router";
 import Link from "next/link";
 import styled from "styled-components";
 import TasksList from "@/components/TasksList";
