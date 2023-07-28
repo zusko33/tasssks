@@ -1,14 +1,4 @@
-import styled from "styled-components";
-
-// const Button = styled.button`
-//   position: relative;
-//   background-color: white;
-//   border-radius: 8px;
-//   color: black;
-// `;
-
 export default function Form({ onSubmit, title, defaultValue }) {
-  // if there will be default date add a prop to Form component
   return (
     <form onSubmit={onSubmit} className="form-control w-full max-w-xs">
       <h2>{title}</h2>
@@ -21,6 +11,15 @@ export default function Form({ onSubmit, title, defaultValue }) {
         type="text"
         maxLength="20"
         defaultValue={defaultValue?.name}
+      />
+      <label htmlFor="date" className="label">
+        <span className="label-text">choose date:</span>
+      </label>
+      <input
+        id="date"
+        name="date"
+        type="date"
+        defaultValue={defaultValue?.date}
       />
       <label htmlFor="type" className="label">
         <span className="label-text">choose type of task:</span>
