@@ -2,6 +2,9 @@ import Link from "next/link";
 import styled from "styled-components";
 import { MdOutlineAddBox } from "react-icons/md";
 import { IconContext } from "react-icons";
+import { BiEditAlt } from "react-icons/bi";
+import { AiOutlineDelete } from "react-icons/ai";
+import { TiTickOutline } from "react-icons/ti";
 
 const Div = styled.div`
   margin-bottom: 2%;
@@ -27,12 +30,12 @@ export default function TasksList({ data, onClick }) {
                       passHref
                       legacyBehavior
                     >
-                      ⚙️
+                      <BiEditAlt />
                     </Link>
                   </button>
                   <button className="btn btn-square btn-sm">
                     <Link href={`/tasks/${task._id}`} passHref legacyBehavior>
-                      🗑
+                      <AiOutlineDelete />
                     </Link>
                   </button>
                   <button
@@ -43,7 +46,7 @@ export default function TasksList({ data, onClick }) {
                         : "btn btn-square btn-sm"
                     }
                   >
-                    ☑️
+                    <TiTickOutline />
                   </button>
                 </div>
                 <p>

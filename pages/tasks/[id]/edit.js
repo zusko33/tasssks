@@ -3,6 +3,8 @@ import Link from "next/link";
 import useSWR from "swr";
 import Form from "@/components/Form";
 import styled from "styled-components";
+import { IconContext } from "react-icons";
+import { AiOutlineRollback } from "react-icons/ai";
 
 const Button = styled.button`
   margin: 2% 2% 2% 2%;
@@ -43,7 +45,11 @@ export default function EditPage() {
   return (
     <>
       <Link href="/calendar" passHref legacyBehavior>
-        <Button className="btn btn-neutral"> 🔙 </Button>
+        <Button className="btn btn-neutral">
+          <IconContext.Provider value={{ size: "2rem" }}>
+            <AiOutlineRollback />
+          </IconContext.Provider>
+        </Button>
       </Link>
       <h2>Edit Task:</h2>
 

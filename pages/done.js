@@ -21,7 +21,6 @@ export default function Done() {
       <Link href="/" passHref legacyBehavior>
         <Link>
           <Button className="btn btn-neutral">
-            {" "}
             <IconContext.Provider value={{ size: "2rem" }}>
               <AiOutlineRollback />
             </IconContext.Provider>

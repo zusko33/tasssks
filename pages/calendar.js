@@ -27,7 +27,6 @@ export default function List() {
 
   async function doneTask(taskId) {
     const updateTask = tasks.find((task) => task._id === taskId);
-    console.log("updateTask", taskId);
     updateTask.isDone = !updateTask.isDone;
 
     const response = await fetch(`/api/tasks/${taskId}`, {
