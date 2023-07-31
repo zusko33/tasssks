@@ -7,8 +7,8 @@ export default function Home({ src, id, alt }) {
         className="mask mask-squircle"
         src={src}
         alt={alt}
-        width={135}
-        height={135}
+        width={190}
+        height={170}
         id={id}
       />
     </>

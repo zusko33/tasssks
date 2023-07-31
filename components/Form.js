@@ -9,7 +9,8 @@ export default function Form({ onSubmit, title, defaultValue }) {
         id="name"
         name="name"
         type="text"
-        maxLength="20"
+        maxLength="15"
+        className="input input-bordered w-full max-w-xs"
         defaultValue={defaultValue?.name}
       />
       <label htmlFor="date" className="label">
@@ -19,12 +20,17 @@ export default function Form({ onSubmit, title, defaultValue }) {
         id="date"
         name="date"
         type="date"
+        className="select select-bordered w-full max-w-xs"
         defaultValue={defaultValue?.date}
       />
       <label htmlFor="type" className="label">
         <span className="label-text">choose type of task:</span>
       </label>
-      <select name="type" id="type">
+      <select
+        name="type"
+        id="type"
+        className="select select-bordered w-full max-w-xs"
+      >
         <option value="🧽 🪣 ">🧽 🪣 </option>
 
         <option value="🗂 📌 ">🗂 📌 </option>
@@ -38,6 +44,7 @@ export default function Form({ onSubmit, title, defaultValue }) {
         name="description"
         cols="30"
         rows="10"
+        className="textarea textarea-bordered"
         defaultValue={defaultValue?.description}
       ></textarea>
       <button className="btn btn-neutral">
