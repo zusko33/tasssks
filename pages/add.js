@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import Form from "@/components/Form";
+import { AiOutlineRollback } from "react-icons/ai";
+import { IconContext } from "react-icons";
 
 const Button = styled.button`
   margin: 2% 2% 2% 2%;
@@ -38,7 +40,12 @@ export default function AddNewTaskPage() {
   return (
     <>
       <Link href="/" passHref legacyBehavior>
-        <Button className="btn btn-neutral"> 🔙 </Button>
+        <Button className="btn btn-neutral">
+          {" "}
+          <IconContext.Provider value={{ size: "2rem" }}>
+            <AiOutlineRollback />
+          </IconContext.Provider>
+        </Button>
       </Link>
 
       <Form onSubmit={addTask} title="ADD A NEW TASK:" />

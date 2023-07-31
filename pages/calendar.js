@@ -5,6 +5,8 @@ import styled from "styled-components";
 import Calendar from "react-calendar";
 import React, { useState } from "react";
 import { useRouter } from "next/router";
+import { AiOutlineRollback } from "react-icons/ai";
+import { IconContext } from "react-icons";
 
 const Button = styled.button`
   margin: 2% 2% 2% 2%;
@@ -56,7 +58,11 @@ export default function List() {
       <TasksList data={data} onClick={doneTask} />
       <Link href="/" passHref legacyBehavior>
         <Link>
-          <Button className="btn btn-neutral"> 🔙 </Button>
+          <Button className="btn btn-neutral">
+            <IconContext.Provider value={{ size: "2rem" }}>
+              <AiOutlineRollback />
+            </IconContext.Provider>
+          </Button>
         </Link>
       </Link>
     </>

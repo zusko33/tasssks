@@ -1,5 +1,7 @@
 import Link from "next/link";
 import styled from "styled-components";
+import { MdOutlineAddBox } from "react-icons/md";
+import { IconContext } from "react-icons";
 
 const Div = styled.div`
   margin-bottom: 2%;
@@ -55,7 +57,11 @@ export default function TasksList({ data, onClick }) {
       </ul>
       <Link href="/add" passHref legacyBehavior>
         <Link>
-          <Button className="btn btn-neutral"> ➕ new task</Button>
+          <Button className="btn btn-neutral">
+            <IconContext.Provider value={{ size: "2rem" }}>
+              <MdOutlineAddBox />
+            </IconContext.Provider>
+          </Button>
         </Link>
       </Link>
     </>

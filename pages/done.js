@@ -4,6 +4,8 @@ import useSWR from "swr";
 import Link from "next/link";
 import styled from "styled-components";
 import TasksList from "@/components/TasksList";
+import { AiOutlineRollback } from "react-icons/ai";
+import { IconContext } from "react-icons";
 
 const Button = styled.button`
   margin: 2% 2% 2% 2%;
@@ -18,7 +20,12 @@ export default function Done() {
       <TasksList data={updateData} />
       <Link href="/" passHref legacyBehavior>
         <Link>
-          <Button className="btn btn-neutral"> 🔙 </Button>
+          <Button className="btn btn-neutral">
+            {" "}
+            <IconContext.Provider value={{ size: "2rem" }}>
+              <AiOutlineRollback />
+            </IconContext.Provider>
+          </Button>
         </Link>
       </Link>
     </>
