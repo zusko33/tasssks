@@ -10,7 +10,6 @@ const Button = styled.button`
 `;
 
 export default function TasksList({ data, onClick }) {
-  console.log(data);
   return (
     <>
       <ul role="list">

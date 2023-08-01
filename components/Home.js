@@ -5,6 +5,7 @@ export default function Home({ src, id, alt }) {
     <>
       <Image
         className="mask mask-squircle"
+        priority={true}
         src={src}
         alt={alt}
         width={190}

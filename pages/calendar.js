@@ -25,7 +25,6 @@ export default function List() {
 
   async function doneTask(taskId) {
     const updateTask = tasks.find((task) => task._id === taskId);
-    console.log("updateTask", taskId);
     updateTask.isDone = !updateTask.isDone;
 
     const response = await fetch(`/api/tasks/${taskId}`, {
@@ -47,13 +46,14 @@ export default function List() {
     mutate();
     router.push("/calendar");
   }
+  const updateData = data.filter((item) => item.isDone === false);
 
   return (
     <>
       <Div>
         <Calendar onChange={onChange} value={value} />
       </Div>
-      <TasksList data={data} onClick={doneTask} />
+      <TasksList data={updateData} onClick={doneTask} />
       <Link href="/" passHref legacyBehavior>
         <Link>
           <Button className="btn btn-neutral"> 🔙 </Button>
