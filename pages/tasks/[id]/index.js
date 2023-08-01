@@ -17,20 +17,25 @@ export default function DetailsPage() {
   if (!isReady || isLoading || error) return <h2>Loading...</h2>;
 
   async function deleteTask() {
-    const response = await fetch(`/api/tasks/${id}`, {
-      method: "DELETE",
-    });
+    const confirmation = window.confirm(
+      "Are you sure you want to delete this task?"
+    );
+    if (confirmation) {
+      const response = await fetch(`/api/tasks/${id}`, {
+        method: "DELETE",
+      });
 
-    if (!response.ok) {
-      console.error(`Error: ${response.status}`);
-      return;
+      if (!response.ok) {
+        console.error(`Error: ${response.status}`);
+        return;
+      }
+
+      if (response.ok) {
+        await response.json();
+      }
+
+      router.push("/calendar");
     }
-
-    if (response.ok) {
-      await response.json();
-    }
-
-    router.push("/calendar");
   }
 
   return (
@@ -38,12 +43,7 @@ export default function DetailsPage() {
       <Link href="/calendar" passHref legacyBehavior>
         <Button className="btn btn-neutral"> 🔙 </Button>
       </Link>
-      <Task
-        data={data}
-        onClick={
-          confirm("Are you sure you want to delete this task?") && deleteTask
-        }
-      />
+      <Task data={data} onClick={deleteTask} />
     </>
   );
 }
