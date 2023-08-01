@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Home from "../components/Home";
 import useSWR from "swr";
 import Link from "next/link.js";
+import LogIn from "../components/LogIn";
 
 const List = styled.ul`
   list-style: none;
@@ -39,6 +40,8 @@ export default function HomePage() {
 
   return (
     <>
+      <LogIn />
+      <br />
       <label className="swap swap-rotate">
         {/* this hidden checkbox controls the state */}
         <input type="checkbox" />
