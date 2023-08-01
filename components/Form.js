@@ -20,7 +20,7 @@ export default function Form({ onSubmit, title, defaultValue }) {
         id="date"
         name="date"
         type="date"
-        className="select select-bordered w-full max-w-xs"
+        className="input input-bordered w-full max-w-xs"
         defaultValue={defaultValue?.date}
       />
       <label htmlFor="type" className="label">
