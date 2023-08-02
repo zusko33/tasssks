@@ -1,7 +1,5 @@
 import NextAuth from "next-auth";
 import GithubProvider from "next-auth/providers/github";
-// import User from "@/db/models/User";
-// import dbConnect from "@/db/connect";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import clientPromise from "../../../lib/mongoose";
 

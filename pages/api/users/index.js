@@ -1,5 +1,5 @@
-import User from "@/db/models/User";
-import dbConnect from "@/db/connect";
+import User from "../../../db/models/User";
+import dbConnect from "../../../db/connect";
 
 export default async function handler(request, response) {
   await dbConnect();
@@ -14,7 +14,7 @@ export default async function handler(request, response) {
       const userData = request.body;
       const newUser = new User(userData);
       await newUser.save();
-      return response.status(201).json({ status: "Task created." });
+      return response.status(201).json({ status: "User created." });
     } catch (error) {
       console.error(error);
       return response.status(400).json({ error: error.message });
