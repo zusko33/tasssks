@@ -44,7 +44,8 @@ export default function TasksList({ data, onClick }) {
                   </button>
                 </div>
                 <p>
-                  {task.name} {task.type} <br />
+                  {task.avatar}
+                  {task.name} {task.type}
                   {task.date}
                 </p>
               </div>

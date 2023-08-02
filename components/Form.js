@@ -20,7 +20,7 @@ export default function Form({ onSubmit, title, defaultValue }) {
         id="date"
         name="date"
         type="date"
-        className="select select-bordered w-full max-w-xs"
+        className="input input-bordered w-full max-w-xs"
         defaultValue={defaultValue?.date}
       />
       <label htmlFor="type" className="label">
@@ -43,10 +43,35 @@ export default function Form({ onSubmit, title, defaultValue }) {
         id="description"
         name="description"
         cols="30"
-        rows="10"
+        rows="6"
         className="textarea textarea-bordered"
         defaultValue={defaultValue?.description}
       ></textarea>
+      <label htmlFor="memberName" className="label">
+        <span className="label-text">Member name: </span>
+      </label>
+      <input
+        id="memberName"
+        name="memberName"
+        type="text"
+        maxLength="11"
+        className="input input-bordered w-full max-w-xs"
+        defaultValue={defaultValue?.memberName}
+      />
+      <label htmlFor="avatar" className="label">
+        <span className="label-text">choose an avatar:</span>
+      </label>
+      <select
+        name="avatar"
+        id="avatar"
+        className="select select-bordered w-full max-w-xs"
+      >
+        <option value="🦄 ">🦄 </option>
+
+        <option value="🐝 ">🐝 </option>
+        <option value="🐌 ">🐌 </option>
+        <option value="🦥 ">🦥 </option>
+      </select>
       <button className="btn btn-neutral">
         {defaultValue ? "Update this task" : "Add this task"}
       </button>
