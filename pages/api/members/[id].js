@@ -8,11 +8,11 @@ export default async function handler(request, response) {
   if (request.method === "GET") {
     const member = await Member.findById(id);
 
-    if (!task) {
+    if (!member) {
       return response.status(404).json({ status: "Not Found" });
     }
 
-    response.status(200).json(task);
+    response.status(200).json(member);
   }
   if (request.method === "DELETE") {
     const deleteMember = await Member.findByIdAndDelete(id);

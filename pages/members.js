@@ -21,10 +21,6 @@ export default function Members() {
   const { mutate } = useSWR("/api/members");
   const { data: members } = useSWR("/api/members", { fallbackData: [] });
   const router = useRouter();
-  // const { isReady } = router;
-  // const { id } = router.query;
-  // const { data: members, isLoading, error } = useSWR(`/api/members/${id}`);
-  // if (!isReady || isLoading || error) return <h2>Loading...</h2>;
 
   async function addMember(event) {
     event.preventDefault();
@@ -49,27 +45,6 @@ export default function Members() {
     event.target.reset();
     router.push("/members");
   }
-  async function deleteMember() {
-    const confirmation = window.confirm(
-      "Are you sure you want to delete this task?"
-    );
-    if (confirmation) {
-      const response = await fetch(`/api/members`, {
-        method: "DELETE",
-      });
-
-      if (!response.ok) {
-        console.error(`Error: ${response.status}`);
-        return;
-      }
-
-      if (response.ok) {
-        await response.json();
-      }
-
-      router.push("/members");
-    }
-  }
 
   if (session) {
     return (
@@ -83,11 +58,14 @@ export default function Members() {
               <Div className="card w-96 h-20 bg-base-100 shadow-xl">
                 <div className="card-body">
                   <div className="card-actions justify-end">
-                    <button
-                      className="btn btn-square btn-sm"
-                      onClick={deleteMember}
-                    >
-                      🗑
+                    <button className="btn btn-square btn-sm">
+                      <Link
+                        href={`/members/${member._id}`}
+                        passHref
+                        legacyBehavior
+                      >
+                        🗑
+                      </Link>
                     </button>
                   </div>
                   <p>
