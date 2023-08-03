@@ -3,6 +3,8 @@ import Link from "next/link";
 import styled from "styled-components";
 import useSWR from "swr";
 import { useSession } from "next-auth/react";
+import FormMember from "@/components/FormMember";
+import { useRouter } from "next/router";
 
 const Div = styled.div`
   margin-bottom: 2%;
@@ -16,58 +18,71 @@ const Button = styled.button`
 export default function Members() {
   const { data: session } = useSession();
   const { data } = useSWR("/api/tasks", { fallbackData: [] });
+  const { mutate } = useSWR("/api/members");
+  const { data: members } = useSWR("/api/members", { fallbackData: [] });
+  const router = useRouter();
 
-  console.log(data);
+  async function addMember(event) {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+    const membersData = Object.fromEntries(formData);
+
+    const response = await fetch("/api/members", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(membersData),
+    });
+
+    if (!response.ok) {
+      console.error(response.status);
+      return;
+    }
+
+    mutate();
+    event.target.reset();
+    router.push("/members");
+  }
+
   if (session) {
     return (
       <>
         <ProfilePage />
+        <FormMember onSubmit={addMember} />
         <h2>Here are your members:</h2>
         <ul role="list">
-          <li>
-            <Div className="card w-96 h-20 bg-base-100 shadow-xl">
-              <div className="card-body">
-                <p>Zuza 🦄</p>
-                <p>
-                  Number of assigned tasks:
-                  {data.filter((date) => date.memberName === "Zuza").length}
-                </p>
-              </div>
-            </Div>
-          </li>
-          <li>
-            <Div className="card w-96 h-20 bg-base-100 shadow-xl">
-              <div className="card-body">
-                <p>Pola 🐌</p>
-                <p>
-                  Number of assigned tasks:
-                  {data.filter((date) => date.memberName === "Pola").length}
-                </p>
-              </div>
-            </Div>
-          </li>
-          <li>
-            <Div className="card w-96 h-20 bg-base-100 shadow-xl">
-              <div className="card-body">
-                <p>Maja 🐝</p>
-                <p>
-                  Number of assigned tasks:
-                  {data.filter((date) => date.memberName === "Maja").length}
-                </p>
-              </div>
-            </Div>
-          </li>
-          <li>
-            <Div className="card w-96 h-20 bg-base-100 shadow-xl">
-              <div className="card-body">
-                <p>Pawel 🦥</p>
-                <p>
-                  Number of assigned tasks:
-                  {data.filter((date) => date.memberName === "Pawel").length}
-                </p>
-              </div>
-            </Div>
-          </li>
+          {members.map((member) => (
+            <li key={member._id}>
+              <Div className="card w-96 h-20 bg-base-100 shadow-xl">
+                <div className="card-body">
+                  <div className="card-actions justify-end">
+                    <button className="btn btn-square btn-sm">
+                      <Link
+                        href={`/members/${member._id}`}
+                        passHref
+                        legacyBehavior
+                      >
+                        🗑
+                      </Link>
+                    </button>
+                  </div>
+                  <p>
+                    {member.name} {member.avatar}
+                  </p>
+                  <p>
+                    Number of assigned tasks:
+                    {
+                      data.filter(
+                        (date) => date.memberName === `${member.name}`
+                      ).length
+                    }
+                  </p>
+                </div>
+              </Div>
+            </li>
+          ))}
         </ul>
         <Link href="/" passHref legacyBehavior>
           <Link>

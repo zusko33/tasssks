@@ -71,6 +71,8 @@ export default function Form({ onSubmit, title, defaultValue }) {
         <option value="🐝 ">🐝 </option>
         <option value="🐌 ">🐌 </option>
         <option value="🦥 ">🦥 </option>
+        <option value="🦜">🦜</option>
+        <option value="🦒">🦒</option>
       </select>
       <button className="btn btn-neutral">
         {defaultValue ? "Update this task" : "Add this task"}
