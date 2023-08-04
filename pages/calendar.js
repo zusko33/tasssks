@@ -18,7 +18,9 @@ export default function List() {
   const { isReady } = router;
   const { id } = router.query;
   const { data, isLoading, error } = useSWR("/api/tasks", { fallbackData: [] });
-  const [value, onChange] = useState(new Date());
+  // const [value, onChange] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState();
+  const [calendarText, setCalendarText] = useState(`No Date is selected`);
   const { mutate } = useSWR("/api/tasks");
   const [tasks, setTasks] = useState(data);
   if (!isReady || isLoading || error) return <h2>Loading...</h2>;
@@ -48,10 +50,49 @@ export default function List() {
   }
   const updateData = data.filter((item) => item.isDone === false);
 
+  const allMonthValues = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const handleDateChange = (value) => {
+    setSelectedDate(value);
+    // const selectedDateValue = value.toLocaleDateString("en-CA");
+    setCalendarText(
+      data.map((item) => item.date).includes(value.toLocaleDateString("en-CA"))
+        ? `${data.map((item) => item.name)}`
+        : "you have no task today"
+    );
+  };
+  // Function to handle selected Year change
+  const handleYearChange = (value) => {
+    const yearValue = value.getFullYear();
+    setCalendarText(`${yearValue} Year  is selected`);
+  };
+  // Function to handle selected Month change
+  const handleMonthChange = (value) => {
+    const monthValue = allMonthValues[value.getMonth()];
+    setCalendarText(`${monthValue} Month  is selected`);
+  };
   return (
     <>
       <Div>
-        <Calendar onChange={onChange} value={value} />
+        <Calendar
+          onClickMonth={handleMonthChange}
+          onClickYear={handleYearChange}
+          onChange={handleDateChange}
+          value={selectedDate}
+        />
+        <h2 className="calender-details">{calendarText}</h2>
       </Div>
       <TasksList data={updateData} onClick={doneTask} />
       <Link href="/" passHref legacyBehavior>
