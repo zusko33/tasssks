@@ -1,4 +1,4 @@
-import ProfilePage from "@/components/ProfilePage";
+// import ProfilePage from "@/components/ProfilePage";
 import Link from "next/link";
 import styled from "styled-components";
 import useSWR from "swr";
@@ -49,15 +49,14 @@ export default function Members() {
   if (session) {
     return (
       <>
-        <ProfilePage />
-        <br />
+        <h1>Hi {session.user.name}</h1>
         <FormMember onSubmit={addMember} />
         <br />
         <h2>Your members:</h2>
         <ul role="list">
           {members.map((member) => (
             <li key={member._id}>
-              <Div className="card w-96 h-20 bg-base-100 shadow-xl">
+              <Div className="card w-96 h-21 bg-base-100 shadow-xl">
                 <div className="card-body">
                   <div className="card-actions justify-end">
                     <button className="btn btn-square btn-sm">
@@ -74,11 +73,17 @@ export default function Members() {
                     {member.name} {member.avatar}
                   </p>
                   <p>
-                    Number of assigned tasks:
+                    tasks to do:
                     {
-                      data.filter(
-                        (date) => date.memberName === `${member.name}`
-                      ).length
+                      data
+                        .filter((date) => date.memberName === `${member.name}`)
+                        .filter((one) => one.isDone === false).length
+                    }
+                    <br /> done tasks:
+                    {
+                      data
+                        .filter((date) => date.memberName === `${member.name}`)
+                        .filter((one) => one.isDone === true).length
                     }
                   </p>
                 </div>
