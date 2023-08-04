@@ -18,7 +18,6 @@ export default function List() {
   const { isReady } = router;
   const { id } = router.query;
   const { data, isLoading, error } = useSWR("/api/tasks", { fallbackData: [] });
-  // const [value, onChange] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState();
   const [calendarText, setCalendarText] = useState(`No Date is selected`);
   const { mutate } = useSWR("/api/tasks");
@@ -66,10 +65,13 @@ export default function List() {
   ];
   const handleDateChange = (value) => {
     setSelectedDate(value);
-    // const selectedDateValue = value.toLocaleDateString("en-CA");
     setCalendarText(
-      data.map((item) => item.date).includes(value.toLocaleDateString("en-CA"))
-        ? `${data.map((item) => item.name)}`
+      data
+        .map((item) => item.date)
+        .find((one) => one === value.toLocaleDateString("en-CA"))
+        ? `${data
+            .filter((one) => one.date === value.toLocaleDateString("en-CA"))
+            .map((item) => item.name)}`
         : "you have no task today"
     );
   };
@@ -92,8 +94,14 @@ export default function List() {
           onChange={handleDateChange}
           value={selectedDate}
         />
-        <h2 className="calender-details">{calendarText}</h2>
+        <div className="calender-details">
+          <div className="card w-96 h-10 bg-base-100 shadow-xl" key={data._id}>
+            <p>{calendarText}</p>
+          </div>
+        </div>
       </Div>
+      <br />
+      <h1>All tasks:</h1>
       <TasksList data={updateData} onClick={doneTask} />
       <Link href="/" passHref legacyBehavior>
         <Link>
