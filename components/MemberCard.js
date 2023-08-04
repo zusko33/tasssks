@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 export default function MemberCard({ data, onClick }) {
   return (
     <div className="card w-96 bg-base-100 shadow-xl" key={data._id}>

@@ -50,8 +50,10 @@ export default function Members() {
     return (
       <>
         <ProfilePage />
+        <br />
         <FormMember onSubmit={addMember} />
-        <h2>Here are your members:</h2>
+        <br />
+        <h2>Your members:</h2>
         <ul role="list">
           {members.map((member) => (
             <li key={member._id}>
@@ -64,7 +66,7 @@ export default function Members() {
                         passHref
                         legacyBehavior
                       >
-                        🗑
+                        ✖️
                       </Link>
                     </button>
                   </div>
