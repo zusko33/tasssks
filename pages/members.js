@@ -1,4 +1,3 @@
-// import ProfilePage from "@/components/ProfilePage";
 import Link from "next/link";
 import styled from "styled-components";
 import useSWR from "swr";

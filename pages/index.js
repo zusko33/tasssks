@@ -7,11 +7,12 @@ import LogIn from "../components/LogIn";
 const List = styled.ul`
   list-style: none;
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 25% 25% 25% 25%;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   justify-self: center;
   place-items: center;
-  gap: 5%;
+  row-gap: 10%;
+  column-gap: 0%;
   padding-bottom: 2rem;
   padding-top: 2rem;
 `;
