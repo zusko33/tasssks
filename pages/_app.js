@@ -20,9 +20,11 @@ export default function App({
       }}
     >
       <SessionProvider session={session}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <div className="main-div">
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </div>
       </SessionProvider>
     </SWRConfig>
   );

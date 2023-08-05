@@ -15,5 +15,9 @@ const Headline = styled.h1`
 `;
 
 export default function TitleBar() {
-  return <Headline className={amaranth.className}>Tasssks</Headline>;
+  return (
+    <Headline className={amaranth.className} data-theme="dark">
+      Tasssks
+    </Headline>
+  );
 }

@@ -10,7 +10,9 @@ const Button = styled.button`
   margin: 2% 2% 2% 2%;
 `;
 const Div = styled.div`
-  margin: 0% 2% 2% 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export default function List() {
@@ -86,8 +88,8 @@ export default function List() {
     setCalendarText(`${monthValue} Month  is selected`);
   };
   return (
-    <>
-      <Div>
+    <Div>
+      <div>
         <Calendar
           onClickMonth={handleMonthChange}
           onClickYear={handleYearChange}
@@ -99,15 +101,15 @@ export default function List() {
             <p>{calendarText}</p>
           </div>
         </div>
-      </Div>
+      </div>
       <br />
-      <h1>All tasks:</h1>
+      <h1>All tasks to do:</h1>
       <TasksList data={updateData} onClick={doneTask} />
       <Link href="/" passHref legacyBehavior>
         <Link>
           <Button className="btn btn-neutral"> 🔙 </Button>
         </Link>
       </Link>
-    </>
+    </Div>
   );
 }
