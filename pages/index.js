@@ -55,11 +55,11 @@ export default function HomePage() {
           </li>
         ))}
       </List>
-      <Link href="/add" passHref legacyBehavior>
+      {/* <Link href="/add" passHref legacyBehavior>
         <Link>
           <button className="btn btn-neutral"> ➕ new task</button>
         </Link>
-      </Link>
+      </Link> */}
     </>
   );
 }

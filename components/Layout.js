@@ -1,4 +1,5 @@
 import TitleBar from "./TitleBar.js";
+import Footer from "./Footer.js";
 import { Amaranth } from "next/font/google";
 
 const amaranth = Amaranth({ weight: "400", subsets: ["latin"] });
@@ -11,6 +12,7 @@ export default function Layout({ children }) {
         <main className={amaranth.className} data-theme="light">
           {children}
         </main>
+        <Footer />
       </div>
     </>
   );

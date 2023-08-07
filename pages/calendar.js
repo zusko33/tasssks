@@ -96,9 +96,22 @@ export default function List() {
           onChange={handleDateChange}
           value={selectedDate}
         />
+        {/* <div className="dropdown">
+          <label tabIndex={0}></label>
+          <ul
+            tabIndex={0}
+            className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            <li>
+              <a>{calendarText}</a>
+            </li>
+          </ul>
+        </div> */}
         <div className="calender-details">
-          <div className="card w-96 h-10 bg-base-100 shadow-xl" key={data._id}>
-            <p>{calendarText}</p>
+          <div className="card w-86 h-20 bg-base-100 shadow-xl">
+            <div className="card-body">
+              <p>{calendarText}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -107,7 +120,22 @@ export default function List() {
       <TasksList data={updateData} onClick={doneTask} />
       <Link href="/" passHref legacyBehavior>
         <Link>
-          <Button className="btn btn-neutral"> 🔙 </Button>
+          <Button className="btn btn-neutral">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3"
+              />
+            </svg>
+          </Button>
         </Link>
       </Link>
     </Div>
