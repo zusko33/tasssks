@@ -71,7 +71,10 @@ export default function List() {
       data
         .map((item) => item.date)
         .find((one) => one === value.toLocaleDateString("en-CA"))
-        ? `${data
+        ? `${value.toLocaleDateString("en-CA", {
+            month: "short",
+            day: "numeric",
+          })} : ${data
             .filter((one) => one.date === value.toLocaleDateString("en-CA"))
             .map((item) => item.name)}`
         : "you have no task today 🍹"
@@ -97,19 +100,8 @@ export default function List() {
             onChange={handleDateChange}
             value={selectedDate}
           />
-          {/* <div className="dropdown">
-          <label tabIndex={0}></label>
-          <ul
-            tabIndex={0}
-            className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
-          >
-            <li>
-              <a>{calendarText}</a>
-            </li>
-          </ul>
-        </div> */}
           <div className="calender-details">
-            <div className="card w-86 h-20 bg-base-100 shadow-xl">
+            <div className="card w-86 h-20 bg-accent shadow-xl">
               <div className="card-body items-center">
                 <p> {calendarText}</p>
               </div>
