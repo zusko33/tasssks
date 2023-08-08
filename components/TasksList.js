@@ -1,14 +1,9 @@
 import Link from "next/link";
 import styled from "styled-components";
-// import Image from "next/image";
-// import DeleteIcon from "@/public/delete";
 
 const Div = styled.div`
   margin-bottom: 2%;
   justify-content: center;
-`;
-const Button = styled.button`
-  margin: 2% 2% 2% 5%;
 `;
 
 export default function TasksList({ data, onClick }) {
@@ -17,7 +12,7 @@ export default function TasksList({ data, onClick }) {
       <ul role="list">
         {data.map((task) => (
           <li key={task._id}>
-            <Div className="card w-96 h-20 bg-base-100 shadow-xl">
+            <Div className="card w-96 h-25 bg-base-100 shadow-xl">
               <div className="card-body">
                 <div className="card-actions justify-end">
                   <button className="btn btn-square btn-sm">
@@ -85,8 +80,8 @@ export default function TasksList({ data, onClick }) {
                   </button>
                 </div>
                 <p>
-                  {task.avatar}
-                  {task.name} {task.type}
+                  {task.avatar} <br />
+                  {task.name} {task.type} <br />
                   {task.date}
                 </p>
               </div>
@@ -94,45 +89,6 @@ export default function TasksList({ data, onClick }) {
           </li>
         ))}
       </ul>
-      <Link href="/add" passHref legacyBehavior>
-        <Link>
-          <Button className="btn btn-neutral">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              className="w-6 h-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
-          </Button>
-        </Link>
-      </Link>
     </>
   );
-}
-
-{
-  /* <div className="card w-96 bg-base-100 shadow-xl">
-  <div className="card-body">
-    <div className="card-actions justify-end">
-      <button className="btn btn-square btn-sm">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
-      </button>
-      <button className="btn btn-square btn-sm">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
-      </button>
-      <button className="btn btn-square btn-sm">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
-      </button>
-    </div>
-    <p>We are using cookies for no reason.</p>
-  </div>
-</div> */
 }

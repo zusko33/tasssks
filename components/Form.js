@@ -30,11 +30,14 @@ export default function Form({ onSubmit, title, defaultValue }) {
         name="type"
         id="type"
         className="select select-bordered w-full max-w-xs"
+        defaultValue={defaultValue?.type}
       >
         <option value="🧽 🪣 ">🧽 🪣 </option>
 
         <option value="🗂 📌 ">🗂 📌 </option>
         <option value="🩺 💉">🩺 💉</option>
+        <option value="🐕 🐈">🐕 🐈</option>
+        <option value="others">others</option>
       </select>
       <label htmlFor="description" className="label">
         <span className="label-text">description:</span>
@@ -65,6 +68,7 @@ export default function Form({ onSubmit, title, defaultValue }) {
         name="avatar"
         id="avatar"
         className="select select-bordered w-full max-w-xs"
+        defaultValue={defaultValue?.avatar}
       >
         <option value="🦄 ">🦄 </option>
 

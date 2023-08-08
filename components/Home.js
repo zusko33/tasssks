@@ -8,8 +8,8 @@ export default function Home({ src, id, alt }) {
         priority={true}
         src={src}
         alt={alt}
-        width={220}
-        height={200}
+        width={260}
+        height={180}
         id={id}
       />
     </>

@@ -11,10 +11,11 @@ const List = styled.ul`
   grid-template-rows: 1fr 1fr;
   justify-self: center;
   place-items: center;
-  row-gap: 10%;
+  row-gap: 20%;
   column-gap: 0%;
   padding-bottom: 2rem;
   padding-top: 2rem;
+  margin-top: 10%;
 `;
 
 export default function HomePage() {
@@ -50,6 +51,7 @@ export default function HomePage() {
         {data.map((image) => (
           <li key={image._id}>
             <Link href={`/${image.alt}`}>
+              <span class="text-xl">{image.details}</span>
               <Home src={image.src} alt={image.alt} id={image._id} />
             </Link>
           </li>

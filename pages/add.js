@@ -35,7 +35,7 @@ export default function AddNewTaskPage() {
 
     mutate();
     event.target.reset();
-    router.push("/");
+    router.push("/calendar");
   }
   if (session) {
     return (

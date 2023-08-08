@@ -4,6 +4,7 @@ import useSWR from "swr";
 import { useSession } from "next-auth/react";
 import FormMember from "@/components/FormMember";
 import { useRouter } from "next/router";
+import LogIn from "@/components/LogIn";
 
 const Div = styled.div`
   margin-bottom: 2%;
@@ -53,7 +54,7 @@ export default function Members() {
         <FormMember onSubmit={addMember} />
         <br />
         <h2>Your members:</h2>
-        <ul role="list">
+        <ul role="list" className="overflow-auto">
           {members.map((member) => (
             <li key={member._id}>
               <Div className="card w-96 h-21 bg-base-100 shadow-xl">
@@ -104,12 +105,13 @@ export default function Members() {
             </li>
           ))}
         </ul>
-        {/* <Link href="/" passHref legacyBehavior>
-          <Link>
-            <Button className="btn btn-neutral"> 🔙 </Button>
-          </Link>
-        </Link> */}
       </>
     );
   }
+  return (
+    <>
+      <h2>You need to be log in to add a new task</h2>
+      <LogIn />
+    </>
+  );
 }
