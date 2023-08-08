@@ -71,10 +71,13 @@ export default function List() {
       data
         .map((item) => item.date)
         .find((one) => one === value.toLocaleDateString("en-CA"))
-        ? `${data
+        ? `${value.toLocaleDateString("en-CA", {
+            month: "short",
+            day: "numeric",
+          })} : ${data
             .filter((one) => one.date === value.toLocaleDateString("en-CA"))
             .map((item) => item.name)}`
-        : "you have no task today"
+        : "you have no task today 🍹"
     );
   };
   // Function to handle selected Year change
@@ -89,25 +92,64 @@ export default function List() {
   };
   return (
     <Div>
-      <div>
-        <Calendar
-          onClickMonth={handleMonthChange}
-          onClickYear={handleYearChange}
-          onChange={handleDateChange}
-          value={selectedDate}
-        />
-        <div className="calender-details">
-          <div className="card w-96 h-10 bg-base-100 shadow-xl" key={data._id}>
-            <p>{calendarText}</p>
+      <div className="card w-86 h-50 bg-base-100 shadow-xl">
+        <div className="card-body items-center">
+          <Calendar
+            onClickMonth={handleMonthChange}
+            onClickYear={handleYearChange}
+            onChange={handleDateChange}
+            value={selectedDate}
+          />
+          <div className="calender-details">
+            <div className="card w-86 h-20 bg-accent shadow-xl">
+              <div className="card-body items-center">
+                <p> {calendarText}</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
       <br />
       <h1>All tasks to do:</h1>
       <TasksList data={updateData} onClick={doneTask} />
+      <Link href="/add" passHref legacyBehavior>
+        <Link>
+          <Button className="btn btn-neutral">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+          </Button>
+        </Link>
+      </Link>
       <Link href="/" passHref legacyBehavior>
         <Link>
-          <Button className="btn btn-neutral"> 🔙 </Button>
+          <Button className="btn btn-neutral">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3"
+              />
+            </svg>
+          </Button>
         </Link>
       </Link>
     </Div>
