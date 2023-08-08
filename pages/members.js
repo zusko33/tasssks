@@ -110,7 +110,7 @@ export default function Members() {
   }
   return (
     <>
-      <h2>You need to be log in to add a new task</h2>
+      <h2>You need to be log in to add a new member</h2>
       <LogIn />
     </>
   );
